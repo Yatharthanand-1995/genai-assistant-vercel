@@ -9,17 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.53.0",
-    "@langchain/anthropic": "^0.3.21",
-    "@langchain/community": "^0.3.45",
-    "@langchain/core": "^0.3.57",
-    "@langchain/openai": "^0.5.12",
-    "@langchain/pinecone": "^0.2.0",
-    "@langchain/textsplitters": "^0.1.0",
-    "@pinecone-database/pinecone": "^5.1.0",
     "axios": "^1.9.0",
+    "groq-sdk": "^0.23.0",
     "lucide-react": "^0.513.0",
-    "multer": "^2.0.1",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

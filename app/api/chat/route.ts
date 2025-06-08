@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getChatResponse } from '@/lib/ragChain';
+import { getChatResponse } from '@/lib/groqChat';
 
 export const runtime = 'nodejs';
 

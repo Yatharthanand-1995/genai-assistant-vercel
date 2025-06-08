@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  serverExternalPackages: ['@pinecone-database/pinecone'],
+  serverExternalPackages: [],
 };
 
 export default nextConfig;

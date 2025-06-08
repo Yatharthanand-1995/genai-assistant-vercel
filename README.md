@@ -1,40 +1,102 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Simple AI Chatbot with Groq
+
+A fast and responsive AI chatbot built with Next.js and powered by Groq's lightning-fast inference API.
+
+## Features
+
+- 🚀 **Ultra-fast responses** powered by Groq
+- 💬 **Real-time streaming** for better user experience
+- 🎨 **Modern UI** with Tailwind CSS and dark mode
+- 📱 **Responsive design** that works on all devices
+- 🔄 **Graceful fallbacks** with mock responses when API is unavailable
+- ⚡ **Built with Next.js 15** and React 19
+
+## Tech Stack
+
+- **Frontend**: Next.js 15 + React 19 + TypeScript + Tailwind CSS
+- **AI**: Groq API (Llama3-8B model)
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ installed
+- A Groq API key (get one at [groq.com](https://groq.com))
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd genai-assistant-vercel
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create environment variables:
+```bash
+# Create .env.local file
+echo "GROQ_API_KEY=your_groq_api_key_here" > .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) to see the chatbot in action!
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `GROQ_API_KEY` | Your Groq API key for AI inference | No* |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+*The app includes intelligent mock responses and works without an API key for demo purposes.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Deploy on Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# GenAI--Assistant-Vercel
->>>>>>> a057240b44a89a97109e30194054a315778ef054
+1. Push your code to GitHub
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Add your `GROQ_API_KEY` environment variable in Vercel dashboard
+4. Deploy!
+
+## Project Structure
+
+```
+├── app/
+│   ├── api/chat/route.ts    # Chat API endpoint with streaming
+│   ├── page.tsx             # Main chat interface
+│   └── layout.tsx           # App layout
+├── components/
+│   ├── ChatInterface.tsx    # Real-time chat component
+│   ├── Header.tsx           # App header
+│   └── Sidebar.tsx          # Navigation sidebar
+├── lib/
+│   └── groqChat.ts          # Groq integration and fallbacks
+└── ...
+```
+
+## Development
+
+- **Development**: `npm run dev`
+- **Build**: `npm run build`
+- **Start**: `npm start`
+- **Lint**: `npm run lint`
+
+## Why Groq?
+
+- ⚡ **Lightning fast**: Sub-second response times
+- 💰 **Cost effective**: Competitive pricing
+- 🎯 **High quality**: Access to top models like Llama3
+- 🔧 **Developer friendly**: Simple REST API
+
+## License
+
+MIT License - feel free to use this project for your own chatbot applications!

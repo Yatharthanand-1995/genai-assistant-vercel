@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import VoiceRecorder from './VoiceRecorder';
 
 interface Message {
   role: string;
@@ -27,11 +28,12 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
     scrollToBottom();
   }, [messages]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, messageContent?: string) => {
     e.preventDefault();
-    if (!input.trim() || isLoading) return;
+    const content = messageContent || input;
+    if (!content.trim() || isLoading) return;
 
-    const userMessage = { role: 'user', content: input };
+    const userMessage = { role: 'user', content };
     setMessages([...messages, userMessage]);
     setInput('');
     setIsLoading(true);
@@ -95,6 +97,15 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
     }
   };
 
+  const handleVoiceTranscription = (text: string) => {
+    setInput(text);
+  };
+
+  const handleVoiceSubmit = (text: string) => {
+    const fakeEvent = { preventDefault: () => {} } as React.FormEvent;
+    handleSubmit(fakeEvent, text);
+  };
+
   return (
     <div className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       {/* Messages */}
@@ -103,10 +114,10 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
           <div className="text-center py-12">
             <Bot className="h-12 w-12 mx-auto mb-4 text-gray-400" />
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              Welcome to GenAI Assistant Pro!
+              Welcome to AI Assistant Pro!
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Ask me anything about Generative AI, RAG systems, or AI development.
+              Ask me anything! Type your message or use voice recording with Whisper STT.
             </p>
           </div>
         )}
@@ -182,17 +193,23 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
                 handleSubmit(e);
               }
             }}
-            placeholder="Ask about GenAI, RAG, LLMs, or AI development..."
+            placeholder="Ask me anything or use the microphone for voice input..."
             className="flex-1 resize-none rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-gray-900 dark:text-white placeholder-gray-500 focus:border-indigo-600 focus:outline-none"
             rows={3}
           />
-          <button
-            type="submit"
-            disabled={isLoading || !input.trim()}
-            className="self-end px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            <Send className="h-5 w-5" />
-          </button>
+          <div className="flex flex-col gap-2">
+            <VoiceRecorder 
+              onTranscription={handleVoiceSubmit}
+              disabled={isLoading}
+            />
+            <button
+              type="submit"
+              disabled={isLoading || !input.trim()}
+              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              <Send className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </form>
     </div>
