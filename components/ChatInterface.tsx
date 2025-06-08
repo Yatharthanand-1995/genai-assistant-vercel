@@ -134,9 +134,9 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
               }`}
             >
               {message.role === 'assistant' ? (
-                <ReactMarkdown className="prose dark:prose-invert prose-sm max-w-none">
-                  {message.content}
-                </ReactMarkdown>
+                <div className="prose dark:prose-invert prose-sm max-w-none">
+                  <ReactMarkdown>{message.content}</ReactMarkdown>
+                </div>
               ) : (
                 <p>{message.content}</p>
               )}

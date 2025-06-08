@@ -7,15 +7,14 @@ let vectorStore: PineconeStore | null = null;
 
 // Initialize Pinecone client
 const initPinecone = async () => {
-  if (!process.env.PINECONE_API_KEY || !process.env.PINECONE_ENVIRONMENT) {
-    console.log('Pinecone credentials not found, using mock mode');
+  if (!process.env.PINECONE_API_KEY) {
+    console.log('Pinecone API key not found, using mock mode');
     return null;
   }
 
   try {
     const pinecone = new Pinecone({
       apiKey: process.env.PINECONE_API_KEY,
-      environment: process.env.PINECONE_ENVIRONMENT,
     });
 
     return pinecone;

@@ -56,17 +56,17 @@ Use the following context to provide accurate and helpful responses.${context}`
     
     let fullResponse = '';
     for await (const chunk of stream) {
-      const content = chunk.content || '';
+      const content = typeof chunk.content === 'string' ? chunk.content : '';
       fullResponse += content;
       await onToken(content);
     }
     
     return fullResponse;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Chat error:', error);
     
     // If API error, fall back to mock
-    if (error.message?.includes('credit balance')) {
+    if (error instanceof Error && error.message?.includes('credit balance')) {
       const mockResponse = getMockResponse(messages[messages.length - 1].content);
       for (const char of mockResponse) {
         await onToken(char);

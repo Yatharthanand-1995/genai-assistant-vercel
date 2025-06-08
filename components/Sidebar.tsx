@@ -14,7 +14,7 @@ const SUGGESTED_PROMPTS = [
 
 export default function Sidebar() {
   const [dragActive, setDragActive] = useState(false);
-  const [docCount, setDocCount] = useState(4);
+  const [docCount] = useState(4);
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
