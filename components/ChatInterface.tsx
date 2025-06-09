@@ -97,9 +97,6 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
     }
   };
 
-  const handleVoiceTranscription = (text: string) => {
-    setInput(text);
-  };
 
   const handleVoiceSubmit = (text: string) => {
     const fakeEvent = { preventDefault: () => {} } as React.FormEvent;
