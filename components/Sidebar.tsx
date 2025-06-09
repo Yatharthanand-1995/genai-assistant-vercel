@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { Upload, Lightbulb, BarChart3 } from 'lucide-react';
 
 const SUGGESTED_PROMPTS = [
-  { icon: '🔍', text: 'RAG Fundamentals', prompt: 'Explain how RAG (Retrieval-Augmented Generation) works and its benefits' },
-  { icon: '🤖', text: 'Claude Models', prompt: 'Compare different Claude 3 models and their use cases' },
-  { icon: '🚀', text: 'Production Tips', prompt: 'What are the best practices for building production GenAI applications?' },
-  { icon: '🗄️', text: 'Vector Databases', prompt: 'How do I choose between vector databases like Pinecone, ChromaDB, and Weaviate?' },
-  { icon: '⛓️', text: 'LangChain Guide', prompt: 'Show me how to implement LangChain for document processing' },
-  { icon: '📈', text: 'AI Trends', prompt: 'What are the latest trends in GenAI for 2024?' },
+  { icon: '•', text: 'Technical Analysis', prompt: 'Explain how RAG (Retrieval-Augmented Generation) works and its benefits' },
+  { icon: '•', text: 'Model Comparison', prompt: 'Compare different Claude 3 models and their use cases' },
+  { icon: '•', text: 'Best Practices', prompt: 'What are the best practices for building production GenAI applications?' },
+  { icon: '•', text: 'Database Selection', prompt: 'How do I choose between vector databases like Pinecone, ChromaDB, and Weaviate?' },
+  { icon: '•', text: 'Implementation Guide', prompt: 'Show me how to implement LangChain for document processing' },
+  { icon: '•', text: 'Industry Insights', prompt: 'What are the latest trends in GenAI for 2024?' },
 ];
 
 export default function Sidebar() {
@@ -55,7 +55,7 @@ export default function Sidebar() {
             <button
               key={index}
               onClick={() => handlePromptClick(item.prompt)}
-              className="w-full text-left px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg transition-colors"
+              className="w-full text-left px-3 py-2 text-sm bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg"
             >
               <span className="mr-2">{item.icon}</span>
               {item.text}
@@ -71,7 +71,7 @@ export default function Sidebar() {
           Train RAG Model
         </h4>
         <div
-          className={`border-2 border-dashed rounded-lg p-4 text-center transition-all ${
+          className={`border-2 border-dashed rounded-lg p-4 text-center ${
             dragActive
               ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-900/20'
               : 'border-gray-300 dark:border-gray-600 hover:border-gray-400'

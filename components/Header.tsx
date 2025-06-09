@@ -13,11 +13,11 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
           <div className="flex items-center">
             <Brain className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
             <div className="ml-3">
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                GenAI Assistant Pro
+              <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+                AI Assistant
               </h1>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                AI-Powered Knowledge Assistant
+                Professional Chat Interface
               </p>
             </div>
           </div>
@@ -25,7 +25,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
           <div className="flex items-center space-x-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
@@ -36,14 +36,14 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
             </button>
             
             <button
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
               aria-label="Clear chat"
             >
               <Trash2 className="h-5 w-5 text-gray-600 dark:text-gray-300" />
             </button>
             
             <button
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
               aria-label="Export chat"
             >
               <Download className="h-5 w-5 text-gray-600 dark:text-gray-300" />

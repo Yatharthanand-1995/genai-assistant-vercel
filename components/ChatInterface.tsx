@@ -114,10 +114,10 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
           <div className="text-center py-12">
             <Bot className="h-12 w-12 mx-auto mb-4 text-gray-400" />
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              Welcome to AI Assistant Pro!
+              AI Assistant
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Ask me anything! Type your message or use voice recording with Whisper STT.
+              How can I help you today?
             </p>
           </div>
         )}
@@ -169,11 +169,7 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
               <Bot className="h-5 w-5 text-white" />
             </div>
             <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4">
-              <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100" />
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200" />
-              </div>
+              <p className="text-sm text-gray-500">Processing...</p>
             </div>
           </div>
         )}
@@ -205,7 +201,7 @@ export default function ChatInterface({ messages, setMessages }: ChatInterfacePr
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="h-5 w-5" />
             </button>
