@@ -12,7 +12,12 @@ const SUGGESTED_PROMPTS = [
   { icon: '•', text: 'Industry Insights', prompt: 'What are the latest trends in GenAI for 2024?' },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [dragActive, setDragActive] = useState(false);
   const [docCount] = useState(4);
 
@@ -43,7 +48,22 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-80 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-6 overflow-y-auto">
+    <>
+      {/* Mobile overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={onClose}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <aside className={`
+        fixed lg:static inset-y-0 left-0 z-50 w-80 bg-white dark:bg-gray-800 
+        border-r border-gray-200 dark:border-gray-700 p-6 overflow-y-auto
+        transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
+        lg:translate-x-0 transition-transform duration-200 ease-in-out
+      `}>
       {/* Suggested Topics */}
       <div className="mb-6">
         <h3 className="flex items-center text-sm font-semibold text-gray-900 dark:text-white mb-3">
@@ -116,5 +136,6 @@ export default function Sidebar() {
         </div>
       </div>
     </aside>
+    </>
   );
 }

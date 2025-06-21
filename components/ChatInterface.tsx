@@ -10,12 +10,8 @@ interface Message {
   content: string;
 }
 
-interface ChatInterfaceProps {
-  messages: Message[];
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
-}
-
-export default function ChatInterface({ messages, setMessages }: ChatInterfaceProps) {
+export default function ChatInterface() {
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);

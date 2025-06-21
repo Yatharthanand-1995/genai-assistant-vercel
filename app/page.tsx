@@ -1,29 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import ChatInterface from '@/components/ChatInterface';
-import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import ChatInterface from '@/components/ChatInterface';
 
 export default function Home() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [messages, setMessages] = useState<Array<{role: string, content: string}>>([]);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Header theme={theme} toggleTheme={toggleTheme} />
+    <div className="h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
       
-      <div className="flex max-w-7xl mx-auto h-[calc(100vh-64px)]">
-        <Sidebar />
+      <div className="flex-1 flex overflow-hidden">
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         
-        <main className="flex-1 p-4">
-          <ChatInterface messages={messages} setMessages={setMessages} />
+        <main className="flex-1 flex flex-col">
+          <ChatInterface />
         </main>
       </div>
     </div>
